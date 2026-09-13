@@ -1,0 +1,236 @@
+/* ============================================================
+   Gradina din Sat — shared styles
+   Earthy / natural produce-farm aesthetic.
+   Plain CSS, no build step. Edit the variables below to retheme.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Spline+Sans:wght@400;500;600&display=swap');
+
+:root {
+  /* Colors — change these to re-theme the whole site */
+  --bg:          #f4efe3;  /* warm cream */
+  --bg-alt:      #ece4d2;  /* slightly deeper cream */
+  --ink:         #2a3326;  /* deep forest, used for text */
+  --ink-soft:    #56604f;  /* muted green-grey */
+  --green:       #41633c;  /* primary leaf green */
+  --green-deep:  #2c4329;  /* darker green */
+  --clay:        #bd6b43;  /* terracotta accent */
+  --line:        #cdc3ac;  /* hairline borders */
+
+  /* Type */
+  --display: 'Fraunces', Georgia, serif;
+  --body:    'Spline Sans', system-ui, sans-serif;
+
+  /* Layout */
+  --maxw: 1080px;
+  --pad: clamp(1.25rem, 4vw, 3rem);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  /* subtle paper grain */
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(42,51,38,0.04) 1px, transparent 0);
+  background-size: 22px 22px;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: var(--green); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--clay); }
+
+/* ---------- Layout helpers ---------- */
+.wrap { max-width: var(--maxw); margin: 0 auto; padding-inline: var(--pad); }
+
+section { padding-block: clamp(3rem, 8vw, 6rem); }
+
+/* ---------- Header / nav ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 10;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
+}
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-block: 0.85rem;
+}
+.nav-brand-group {
+  display: flex; align-items: center; gap: 1.25rem;
+}
+.brand {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 1.35rem;
+  letter-spacing: -0.01em;
+  color: var(--green-deep);
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: 0.6rem;
+}
+.brand:hover { color: var(--clay); }
+.brand .mark { font-size: 1.35rem; }
+.brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+.brand .sub {
+  font-family: var(--body);
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+.header-logo-afir {
+  height: 58px;
+  width: auto;
+  object-fit: contain;
+  border-left: 1px solid var(--line);
+  padding-left: 1.25rem;
+}
+.nav-links { display: flex; gap: clamp(1rem, 3vw, 2.25rem); list-style: none; }
+.nav-links a {
+  font-size: 0.95rem; font-weight: 500; text-decoration: none;
+  color: var(--ink-soft); position: relative; padding-block: 0.25rem;
+}
+.nav-links a:hover, .nav-links a[aria-current="page"] { color: var(--green-deep); }
+.nav-links a[aria-current="page"]::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: -2px;
+  height: 2px; background: var(--clay); border-radius: 2px;
+}
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(3.5rem, 9vw, 7rem); }
+.hero-grid {
+  display: grid; gap: clamp(2rem, 5vw, 4rem);
+  grid-template-columns: 1.1fr 0.9fr; align-items: center;
+}
+.eyebrow {
+  text-transform: uppercase; letter-spacing: 0.18em; font-size: 0.78rem;
+  font-weight: 600; color: var(--clay); margin-bottom: 1rem;
+}
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(2.6rem, 6.5vw, 4.4rem);
+  line-height: 1.04;
+  letter-spacing: -0.02em;
+  color: var(--green-deep);
+  margin-bottom: 1.25rem;
+}
+.hero h1 em { font-style: italic; color: var(--clay); }
+.lead { font-size: 1.15rem; color: var(--ink-soft); max-width: 46ch; margin-bottom: 2rem; }
+
+.btn {
+  display: inline-block; font-weight: 600; font-size: 0.95rem;
+  padding: 0.85rem 1.6rem; border-radius: 999px; text-decoration: none;
+  transition: transform 0.15s ease, background 0.15s ease;
+}
+.btn-primary { background: var(--green); color: #fff; }
+.btn-primary:hover { background: var(--green-deep); color: #fff; transform: translateY(-2px); }
+
+/* ---------- Image frames (replace placeholders with real photos) ---------- */
+.photo {
+  position: relative; overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: var(--bg-alt);
+  aspect-ratio: 4 / 5;
+  box-shadow: 0 18px 40px -24px rgba(42,51,38,0.5);
+}
+.photo img { width: 100%; height: 100%; object-fit: cover; }
+/* Placeholder look — remove once real <img> is dropped in */
+.photo--placeholder {
+  display: grid; place-items: center; text-align: center;
+  background:
+    linear-gradient(135deg, #d9d0b8 0%, #c8d3b4 100%);
+  color: var(--green-deep);
+}
+.photo--placeholder span {
+  font-family: var(--display); font-style: italic;
+  font-size: 1.05rem; opacity: 0.8; padding: 1rem;
+}
+.photo--wide { aspect-ratio: 16 / 10; }
+
+/* ---------- Section heading ---------- */
+.sec-head { max-width: 60ch; margin-bottom: 2.5rem; }
+.sec-head h2 {
+  font-family: var(--display); font-weight: 500;
+  font-size: clamp(1.9rem, 4vw, 2.8rem); line-height: 1.1;
+  letter-spacing: -0.015em; color: var(--green-deep); margin-bottom: 0.75rem;
+}
+.sec-head p { color: var(--ink-soft); }
+
+/* ---------- Alt-background band ---------- */
+.band { background: var(--bg-alt); border-block: 1px solid var(--line); }
+
+/* ---------- Feature cards ---------- */
+.cards { display: grid; gap: 1.5rem; grid-template-columns: repeat(4, 1fr); }
+.card {
+  background: var(--bg); border: 1px solid var(--line); border-radius: 14px;
+  padding: 1.75rem;
+}
+.card .ic { font-size: 1.6rem; margin-bottom: 0.75rem; }
+.card h3 { font-family: var(--display); font-weight: 600; font-size: 1.3rem; margin-bottom: 0.4rem; color: var(--green-deep); }
+.card p { color: var(--ink-soft); font-size: 0.98rem; }
+
+/* ---------- Prose (about text) ---------- */
+.prose { max-width: 62ch; }
+.prose p { margin-bottom: 1.2rem; }
+.prose h2 { font-family: var(--display); font-weight: 500; font-size: clamp(1.7rem, 3.5vw, 2.3rem); color: var(--green-deep); margin: 2.5rem 0 1rem; letter-spacing: -0.01em; }
+
+/* ---------- Gallery ---------- */
+.gallery { display: grid; gap: 1.25rem; grid-template-columns: repeat(3, 1fr); }
+.gallery .photo { aspect-ratio: 1 / 1; }
+
+/* ---------- Contact ---------- */
+.contact-grid { width: 100%; }
+.contact-list { list-style: none; display: grid; gap: 1.5rem; grid-template-columns: 1fr; width: 100%; }
+.contact-item {
+  border: 1px solid var(--line); border-radius: 14px; padding: 1.5rem;
+  background: var(--bg);
+}
+.contact-item .label { text-transform: uppercase; letter-spacing: 0.14em; font-size: 0.74rem; font-weight: 600; color: var(--clay); margin-bottom: 0.4rem; }
+.contact-item .value { font-family: var(--display); font-size: 1.25rem; color: var(--green-deep); word-break: break-word; }
+.contact-item .value a { text-decoration: none; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--green-deep); color: #e6ecd9;
+  padding-block: clamp(2.5rem, 6vw, 4rem);
+}
+.site-footer a { color: #d6e4c4; }
+.footer-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; align-items: flex-end; }
+.footer-brand { font-family: var(--display); font-size: 1.6rem; font-weight: 500; }
+.footer-grid .nav-links a { color: #c4d3b0; }
+.footer-grid .nav-links a:hover { color: #fff; }
+.fineprint { width: 100%; border-top: 1px solid rgba(255,255,255,0.15); margin-top: 1.5rem; padding-top: 1.5rem; font-size: 0.85rem; color: #aab997; }
+
+/* ---------- Entrance animation ---------- */
+@keyframes rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+.reveal { animation: rise 0.7s ease both; }
+.reveal:nth-child(2) { animation-delay: 0.08s; }
+.reveal:nth-child(3) { animation-delay: 0.16s; }
+@media (prefers-reduced-motion: reduce) { .reveal { animation: none; } }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .cards { grid-template-columns: repeat(2, 1fr); }
+  .gallery { grid-template-columns: repeat(2, 1fr); }
+  .hero .photo { max-width: 420px; }
+}
+@media (max-width: 520px) {
+  .cards { grid-template-columns: 1fr; }
+  .nav-links { gap: 0.8rem; font-size: 0.85rem; }
+  .brand span.full { display: none; }
+  .nav-brand-group { gap: 0.6rem; }
+  .header-logo-afir { height: 42px; padding-left: 0.6rem; }
+}
